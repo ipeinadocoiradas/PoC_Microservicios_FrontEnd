@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+/*
+  Paleta semántica de la consola. Los componentes usan estas utilidades en lugar de colores sueltos,
+  de modo que el significado de cada color (éxito, compensación, fallo…) es coherente en toda la app.
+*/
+@theme {
+  /* Fuentes del sistema: sin dependencias externas (Segoe UI y Cascadia en Windows). */
+  --font-sans: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Consolas', monospace;
+}
+
+@layer base {
+  html {
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+}
+
+@layer components {
+  .tarjeta {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+  }
+
+  /* Base común de los botones; se combina con .boton-primario o .boton-secundario. */
+  .boton-primario,
+  .boton-secundario {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .boton-primario {
+    @apply bg-indigo-600 text-white hover:bg-indigo-500;
+  }
+
+  .boton-secundario {
+    @apply border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
+  }
+
+  .campo {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm
+      focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none;
+  }
+
+  .etiqueta {
+    @apply mb-1 block text-xs font-semibold tracking-wide text-slate-500 uppercase;
+  }
+
+  .codigo {
+    @apply rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-700;
+  }
+}
